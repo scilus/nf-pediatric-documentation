@@ -28,7 +28,6 @@ jobs:
         with:
           repository: scilus/nf-pediatric
           ref: ${{ github.event.pull_request.head.sha || 'main' }}
-          path: nf-pediatric
           fetch-depth: 0  # Shallow clones should be disabled for a version bump to work
 
       - name: Install Nextflow
@@ -53,7 +52,7 @@ jobs:
       - name: Fetch pipeline parameters
         id: pipeline_params
         run: |
-          nf-core pipelines schema docs -o parameters.md -x markdown
+          nf-core pipelines nf-pediatric/ schema docs -o parameters.md -x markdown
           echo '---' | cat - parameters.md > temp && mv temp parameters.md
           echo 'title: Pipeline Parameters' | cat - parameters.md > temp && mv temp parameters.md
           echo 'description: nf-pediatric parameters' | cat - parameters.md > temp && mv temp parameters.md
