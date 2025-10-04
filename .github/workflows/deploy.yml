@@ -8,6 +8,10 @@ on:
         type: boolean
         required: false
         default: false
+      pr_number:
+        description: "The pull request number (used for comments)"
+        type: number
+        required: false
 
 # Allow this job to clone the repo and create a page deployment
 permissions:
@@ -103,12 +107,14 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     environment:
-      name: pr-preview-${{ github.event.pull_request.number }}
+      name: pr-preview-${{ inputs.pr_number }}
       url: ${{ steps.preview.outputs.page_url }}
     steps:
       - name: Deploy PR preview to GitHub Pages
         id: preview
         uses: actions/deploy-pages@v4
+        with:
+          preview: 'true'
 
       - name: Comment on PR with preview link
         if: ${{ success() && (github.event_name == 'pull_request' || github.event_name == 'pull_request_target') }}
@@ -116,7 +122,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PREVIEW_URL: ${{ steps.preview.outputs.page_url }}
         run: |
-          gh api repos/${{ github.repository }}/issues/${{ github.event.pull_request.number }}/comments \
+          gh api repos/${{ github.repository }}/issues/${{ inputs.pr_number }}/comments \
             -f body="🚀 **Documentation preview deployed!**  
             
             You can view the live preview here:  
