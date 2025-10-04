@@ -52,7 +52,7 @@ jobs:
       - name: Fetch pipeline parameters
         id: pipeline_params
         run: |
-          nf-core pipelines nf-pediatric/ schema docs -o parameters.md -x markdown
+          nf-core pipelines schema docs -d nf-pediatric/ -o parameters.md -x markdown
           echo '---' | cat - parameters.md > temp && mv temp parameters.md
           echo 'title: Pipeline Parameters' | cat - parameters.md > temp && mv temp parameters.md
           echo 'description: nf-pediatric parameters' | cat - parameters.md > temp && mv temp parameters.md
