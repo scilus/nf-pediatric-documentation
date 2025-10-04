@@ -5,6 +5,7 @@ on:
     inputs:
       deploy:
         description: "Whether to deploy the website to GitHub Pages"
+        type: boolean
         required: false
         default: false
 
