@@ -86,11 +86,6 @@ jobs:
           node-version: 22
           package-manager: npm@latest
 
-      - name: Upload built site
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: dist
-
   deploy:
     if: ${{ inputs.deploy == 'true' }}
     needs: build
