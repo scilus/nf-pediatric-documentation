@@ -1,36 +1,33 @@
 ---
-title: Welcome to Starlight
+title: <b>Welcome to the nf-pediatric documentation</b>
+head:
+  - tag: title
+    content: nf-pediatric documentation
 description: Get started building your docs site with Starlight.
 template: splash
 hero:
-  tagline: Congrats on setting up a new Starlight project!
+  tagline: ""
   image:
-    file: ../../assets/houston.webp
+    light: ../../assets/logo_white.svg
+    dark: ../../assets/logo_dark.svg
   actions:
-    - text: Example Guide
-      link: /guides/example/
-      icon: right-arrow
-    - text: Read the Starlight docs
-      link: https://starlight.astro.build
+    - text: Installation
+      link: /nf-pediatric/guides/installation
+      icon: laptop
+    - text: Inputs
+      link: /nf-pediatric/guides/inputs
+      icon: seti:plan
+      variant: 'secondary'
+    - text: Usage
+      link: /nf-pediatric/guides/usage
+      icon: seti:info
+      variant: 'secondary'
+    - text: Outputs
+      link: /nf-pediatric/guides/outputs
       icon: external
-      variant: minimal
+      variant: 'secondary'
+    - text: How to cite
+      link: /nf-pediatric/reference/citation
+      icon: pen
+      variant: 'minimal'
 ---
-
-import { Card, CardGrid } from '@astrojs/starlight/components';
-
-## Next steps
-
-<CardGrid stagger>
-	<Card title="Update content" icon="pencil">
-		Edit `src/content/docs/index.mdx` to see this page change.
-	</Card>
-	<Card title="Add new content" icon="add-document">
-		Add Markdown or MDX files to `src/content/docs` to create new pages.
-	</Card>
-	<Card title="Configure your site" icon="setting">
-		Edit your `sidebar` and other config in `astro.config.mjs`.
-	</Card>
-	<Card title="Read the docs" icon="open-book">
-		Learn more in [the Starlight Docs](https://starlight.astro.build/).
-	</Card>
-</CardGrid>

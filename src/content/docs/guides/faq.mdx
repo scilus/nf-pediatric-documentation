@@ -1,0 +1,19 @@
+---
+title: Frequently Asked Questions
+description: Frequently Asked Questions
+---
+
+import { Steps } from '@astrojs/starlight/components';
+
+
+#### **Q: Can I make the pipeline run in the background?**
+
+**A. Yes**
+
+Nextflow handles job submissions and supervises the running jobs. The Nextflow process must run until the pipeline is finished.
+
+The Nextflow `-bg` flag launches Nextflow in the background, detached from your terminal so that the workflow does not stop if you log out of your session. The logs are saved to a file.
+
+Alternatively, you can use `screen` / `tmux` or similar tool to create a detached session which you can log back into at a later time.
+Some HPC setups also allow you to run nextflow within a cluster job submitted your job scheduler (from where it submits more jobs).
+
