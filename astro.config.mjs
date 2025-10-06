@@ -37,6 +37,7 @@ export default defineConfig({
 						{ label: 'Running the pipeline', slug: 'guides/usage' },
 						{ label: "Parameters", slug: 'guides/parameters' },
 						{ label: 'Outputs', slug: 'guides/outputs' },
+						{ label: 'Age-adaptable priors', slug: 'guides/priors' },
 						{ label: 'Running with no internet access', slug: 'guides/nointernet' },
 						{ label: 'Frequently Asked Questions', slug: 'guides/faq' },
 					],
