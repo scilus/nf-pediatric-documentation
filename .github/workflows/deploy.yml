@@ -63,7 +63,7 @@ jobs:
           echo '---' | cat - parameters.md > temp && mv temp parameters.md
           echo '' | cat - parameters.md > temp && mv temp parameters.md
           sed -E -i 's/^## (.*)$/### **\1**/' parameters.md
-          sed -E -i '/^# scilus\/nf-pediatric pipeline parameters$/,/^nf-pediatric is a neuroimaging pipeline to process pediatric MRI data \(dMRI, and sMRI\) ranging from 0-18 years old\.$/d' input.md
+          sed -E -i '/^# scilus\/nf-pediatric pipeline parameters$/,/^nf-pediatric is a neuroimaging pipeline to process pediatric MRI data \(dMRI, and sMRI\) ranging from 0-18 years old\.$/d' parameters.md
 
       - name: Pack into artifacts
         uses: actions/upload-artifact@v4
