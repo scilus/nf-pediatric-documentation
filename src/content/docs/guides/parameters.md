@@ -1,8 +1,8 @@
-
 ---
-description: nf-pediatric parameters
 title: Pipeline Parameters
+description: nf-pediatric parameters
 ---
+
 
 ### **Input/output options**
 
@@ -19,7 +19,7 @@ This section will detail how to set the inputs and outputs of the pipeline.
 | `multiqc_title_subject` | MultiQC report title for subject report. Printed as page header, used for filename if not otherwise specified. | `string` |  |  |  |
 | `multiqc_title_global` | MultiQC report title for global report. Printed as page header, used for filename if not otherwise specified. | `string` |  |  |  |
 
-#### **Segmentation Options**
+### **Segmentation Options**
 
 Options for FreeSurfer, FastSurfer, and/or M-CRIB-S processing. Only relevant if you select the segmentation profile.
 
@@ -36,7 +36,7 @@ Options for FreeSurfer, FastSurfer, and/or M-CRIB-S processing. Only relevant if
 | `mcribs_nopialoutside` | Do not ensure pial is outside of WM in the MCRIBS surface reconstruction step. | `boolean` | False |  | True |
 | `mcribs_seed` | Seed used in the MCRIBS surface reconstruction step. | `number` | 1234 |  | True |
 
-#### **Atlases Options**
+### **Atlases Options**
 
 Options for atlases used in the pipeline.
 
@@ -44,7 +44,7 @@ Options for atlases used in the pipeline.
 |-----------|-----------|-----------|-----------|-----------|-----------|
 | `utils_folder` | Path to the utils folder. <details><summary>Help</summary><small>This folder contains the atlases used in the pipeline. Unless you know what you are doing, please do not change this.</small></details>| `string` |  |  | True |
 
-#### **Processing steps to apply on anatomical images.**
+### **Processing steps to apply on anatomical images.**
 
 Processing steps to apply on anatomical images. (NOTE: the same steps will be applied on both T1w/T2w if both are available).
 
@@ -58,7 +58,7 @@ Processing steps to apply on anatomical images. (NOTE: the same steps will be ap
 | `preproc_run_crop` | Run cropping on the anatomical images. | `boolean` | True |  | False |
 | `synthstrip_weights` | Path to alternative weights for SynthStrip brain extraction. | `string` | None |  | False |
 
-#### **T1w Processing Options**
+### **T1w Processing Options**
 
 Options for T1w processing. In the case where you do not have a T1w image, you can ignore those options.
 
@@ -72,7 +72,7 @@ Options for T1w processing. In the case where you do not have a T1w image, you c
 | `t1_synthstrip_border` | Mask border threshold used in the SynthStrip brain extraction step. | `integer` | 1 |  | True |
 | `t1_synthstrip_nocsf` | Exclude CSF from the border in the SynthStrip brain extraction step. | `boolean` | False |  | True |
 
-#### **T2w Preprocessing Options**
+### **T2w Preprocessing Options**
 
 Options for T2w preprocessing. In the case where you do not have a T2w image, you can ignore those options.
 
@@ -86,7 +86,7 @@ Options for T2w preprocessing. In the case where you do not have a T2w image, yo
 | `t2_synthstrip_border` | Mask border threshold used in the SynthStrip brain extraction step. | `integer` | 1 |  | True |
 | `t2_synthstrip_nocsf` | Exclude CSF from the border in the SynthStrip brain extraction step. | `boolean` | False |  | True |
 
-#### **Anatomical Co-registration Options**
+### **Anatomical Co-registration Options**
 
 Options for anatomical co-registration. Will only be performed if both T2w and T1w images are available.
 
@@ -96,7 +96,7 @@ Options for anatomical co-registration. Will only be performed if both T2w and T
 | `coreg_transform` | Transform used in the coregistration step. t: translation (1 stage), r: rigid (1 stage), a: rigid + affine (2 stages), s: rigid + affine + deformable syn (3 stages) | `string` | a |  | False |
 | `coreg_quick` | Use antsRegistrationSyNQuick for the coregistration step. | `boolean` | False |  | False |
 
-#### **DWI Preprocessing Options**
+### **DWI Preprocessing Options**
 
 Options for DWI preprocessing. You can use these options to customise the behaviour of the DWI preprocessing steps.
 
@@ -133,7 +133,7 @@ Options for DWI preprocessing. You can use these options to customise the behavi
 | `dwi_resample_mask_voxel_size` | Voxel size used in the DWI mask resampling step. | `integer` | 1 |  | True |
 | `dwi_resample_mask_interp` | Interpolation method used in the DWI mask resampling step. | `string` | nn |  | True |
 
-#### **DTI Options**
+### **DTI Options**
 
 Options for diffusion tensor fitting.
 
@@ -142,7 +142,7 @@ Options for diffusion tensor fitting.
 | `dti_max_shell_value` | Maximum shell value used in the DTI processing step. | `integer` | 1600 |  | True |
 | `dti_shells` | Shells used in the DTI processing step. | `string` |  |  | False |
 
-#### **FRF Options**
+### **FRF Options**
 
 Options for fiber response function (FRF) processing. The FRF is derived from normative curves in function of each participant's age. The current options are mostly if you want to override this default behavior.
 
@@ -155,9 +155,9 @@ Options for fiber response function (FRF) processing. The FRF is derived from no
 | `frf_max_dti_shell_value` | Maximum DTI shell value used. | `integer` | 1600 |  | True |
 | `frf_min_fodf_shell_value` | Minimum FODF shell value used. | `integer` | 700 |  | True |
 | `frf_set_method` | Method used to compute the FRF. | `string` | ssst |  | False |
-| `frf_manual_frf` | Manual FRF values.(e.g. '15,4,4'). This is set from the normative curves. Use this option only to apply a single FRF to every participants. | `string` |  |  | False |
+| `frf_manual_frf` | Manual FRF values.(e.g. '15,4,4'). This is set from the normative curves. Use this option only to apply a single FRF to every participants. For more information, please see [the documentation](https://scilus.github.io/nf-pediatric/guides/priors/). | `string` |  |  | False |
 
-#### **FODF Options**
+### **FODF Options**
 
 Options for FODF processing.
 
@@ -173,7 +173,7 @@ Options for FODF processing.
 | `fodf_max_fa_threshold` | Maximum FA threshold used in the FODF processing step. | `number` | 0.1 |  | True |
 | `fodf_min_md_threshold` | Minimum MD threshold used in the FODF processing step. | `number` | 0.003 |  | True |
 
-#### **PFT Tracking Options**
+### **PFT Tracking Options**
 
 Options for Particle Filter Tracking (PFT).
 
@@ -198,7 +198,7 @@ Options for Particle Filter Tracking (PFT).
 | `pft_back` | Length of PFT back tracking (mm) | `integer` | 2 |  | True |
 | `pft_front` | Length of PFT forward tracking (mm). | `integer` | 1 |  | True |
 
-#### **Local Tracking Options**
+### **Local Tracking Options**
 
 Options for local tracking.
 
@@ -221,7 +221,7 @@ Options for local tracking.
 | `local_min_len` | Minimum length used in the local tracking step. | `number` | 20 |  | False |
 | `local_max_len` | Maximum length used in the local tracking step. | `number` | 200 |  | False |
 
-#### **BundleSeg Options**
+### **BundleSeg Options**
 
 Options for BundleSeg
 
@@ -241,7 +241,7 @@ Options for BundleSeg
 | `volume_per_labels` | If set, will output volume values per labels per bundle. | `boolean` | True |  | False |
 | `mean_std_per_point` | If set, will output mean and std per points per metrics per bundle. | `boolean` | True |  | False |
 
-#### **Transform Labels Options**
+### **Transform Labels Options**
 
 Options for transforming labels from anatomical to diffusion space.
 
@@ -252,7 +252,7 @@ Options for transforming labels from anatomical to diffusion space.
 | `labels_interpolation` | Interpolation method used in the label transformation step. Choices: NearestNeighbor, Linear, or BSpline. | `string` | NearestNeighbor |  | True |
 | `labels_output_dtype` | Output data type used in the label transformation step. Choices: float or int. | `string` | int |  | True |
 
-#### **COMMIT Options**
+### **COMMIT Options**
 
 Options for COMMIT filtering.
 
@@ -266,7 +266,7 @@ Options for COMMIT filtering.
 | `commit_ball_stick` | Use the ball and stick model in the COMMIT filtering step. | `boolean` | False |  | True |
 | `commit_nbr_dir` | Number of directions used in the COMMIT filtering step. | `integer` | 500 |  | True |
 
-#### **Decompose Tractogram Options**
+### **Decompose Tractogram Options**
 
 Options for decomposing the tractogram according to a label file.
 
@@ -282,7 +282,7 @@ Options for decomposing the tractogram according to a label file.
 | `decompose_max_angle` | Maximum angle used in the tractogram decomposition step. | `number` | 330.0 |  | False |
 | `decompose_max_curv` | Maximum curvature used in the tractogram decomposition step. | `number` | 10.0 |  | False |
 
-#### **AFD Fixel Options**
+### **AFD Fixel Options**
 
 Options for AFD fixel processing.
 
@@ -290,7 +290,7 @@ Options for AFD fixel processing.
 |-----------|-----------|-----------|-----------|-----------|-----------|
 | `afd_fixel_length_weighting` | Use length weighting in the AFD fixel processing step. | `boolean` | False |  | True |
 
-#### **Output to Template Options**
+### **Output to Template Options**
 
 Options for outputting to specific template space.
 
@@ -302,7 +302,7 @@ Options for outputting to specific template space.
 | `templateflow_home` | Path to the TemplateFlow home directory where templates will be downloaded. If you are running the pipeline without internet access, this needs to point to a folder containing predownloaded templates. | `string` | ./templateflow |  | False |
 | `use_template_t2w` | Use the T2w image from the template space (useful with infant data.). | `boolean` | False |  | False |
 
-#### **Pipeline profile**
+### **Pipeline profile**
 
 Pipeline profile options. This is a short list of options. For full description, please see [the documentation](https://scilus.github.io/nf-pediatric/guides/usage/#choosing-a-profile)
 
@@ -313,7 +313,7 @@ Pipeline profile options. This is a short list of options. For full description,
 | `connectomics` | Perform connectomics profile. | `boolean` | False |  | True |
 | `segmentation` | Perform segmentation profile. | `boolean` | False |  | True |
 
-#### **Institutional config options**
+### **Institutional config options**
 
 Parameters used to describe centralised config profiles. These should not be edited.
 
@@ -326,7 +326,7 @@ Parameters used to describe centralised config profiles. These should not be edi
 | `config_profile_contact` | Institutional config contact information. | `string` |  |  | True |
 | `config_profile_url` | Institutional config URL link. | `string` |  |  | True |
 
-#### **Generic options**
+### **Generic options**
 
 Less common options for the pipeline, typically set in a config file.
 

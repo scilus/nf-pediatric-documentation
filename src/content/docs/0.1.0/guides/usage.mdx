@@ -11,7 +11,7 @@ import { Steps } from '@astrojs/starlight/components';
 
 ![nf-pediatric pipeline schema](../../../../assets/0.1.0/nf-pediatric-schema.png)
 
-#### **Choosing a profile**
+### **Choosing a profile**
 
 `nf-pediatric` core functionalities are accessed and selected using profiles. This means users can select which part of the pipeline they want to run depending on their specific aims and the current state of their data (already preprocessed or not). As of now, here is a list of the available profiles and a short description of their processing steps:
 
@@ -23,7 +23,7 @@ import { Steps } from '@astrojs/starlight/components';
      By selecting this profile, [FreeSurfer `recon-all`](https://surfer.nmr.mgh.harvard.edu/), [Recon-all-clinical](https://surfer.nmr.mgh.harvard.edu/fswiki/recon-all-clinical), [FastSurfer](https://deep-mi.org/research/fastsurfer/) or [M-CRIB-S/InfantFS](https://github.com/DevelopmentalImagingMCRI/MCRIBS) will be used to process the T1w/T2w images and the Brainnetome Child Atlas ([Li et al., 2022](https://doi.org/10.1093/cercor/bhac415)) or Desikan-Killiany (for infant (\< 3 months)) will be registered using surface-based methods in the native subject space.
 
      :::caution
-     **A valid FreeSurfer license file is required for this profile. Specify the path to your license using [`--fs_license`](./parameters#segmentation-options).** If you don't have a valid license, you can register for one [here](https://surfer.nmr.mgh.harvard.edu/registration.html).
+     **A valid FreeSurfer license file is required for this profile. Specify the path to your license using [`--fs_license`](/nf-pediatric/0.1.0/guides/parameters#segmentation-options).** If you don't have a valid license, you can register for one [here](https://surfer.nmr.mgh.harvard.edu/registration.html).
      :::
 
   2. **`-profile tracking`:**
@@ -69,7 +69,7 @@ import { Steps } from '@astrojs/starlight/components';
 For example, to perform the end-to-end connectomics pipeline, users should select `-profile tracking,segmentation,connectomics`.
 :::
 
-#### **Typical command-line**
+### **Typical command-line**
 
 The typical command for running the pipeline is as follows:
 
@@ -86,7 +86,7 @@ This will launch the pipeline with the `docker` configuration profile and will r
 <Steps>
   1. **`--input`**: for the path to your BIDS directory
 
-     For more details on how to organize your input folder, please refer to the [inputs section](./inputs).
+     For more details on how to organize your input folder, please refer to the [inputs section](/nf-pediatric/0.1.0/guides/inputs).
 
      :::note
      A single or a subset of participants can be specified using `--participant-label`; this will constrain the pipeline to run only on those specified subjects. The recommended way of supplying those specific subject ids is to use a `params.yml` file. This will reduce the length of the command, and make sure you keep a trace of which subject was processed. For a specific example, please see [this section](#using-the-paramsyml-file).
@@ -110,11 +110,11 @@ This will launch the pipeline with the `docker` configuration profile and will r
 </Steps>
 
 :::note
-More parameters can be tuned to your own usage, for a concise list of the most common parameters, you can run `nextflow run scilus/nf-pediatric -r 0.1.0 --help`. Otherwise, for the complete list of parameters, please refer to the [parameters section](./parameters) of the documentation.
+More parameters can be tuned to your own usage, for a concise list of the most common parameters, you can run `nextflow run scilus/nf-pediatric -r 0.1.0 --help`. Otherwise, for the complete list of parameters, please refer to the [parameters section](/nf-pediatric/0.1.0/guides/parameters) of the documentation.
 :::
 
 :::caution[Running the pipeline in offline mode]
-If the computer nodes you are planning to use do not have access to the internet, there is a few steps to go through to make sure the containers and templates are available during pipeline execution. Please head over to [running with no internet access section](./nointernet).
+If the computer nodes you are planning to use do not have access to the internet, there is a few steps to go through to make sure the containers and templates are available during pipeline execution. Please head over to [running with no internet access section](/nf-pediatric/0.1.0/guides/nointernet).
 :::
 
 Note that the pipeline will create the following files in your working directory:
@@ -135,7 +135,7 @@ Note that the pipeline will create the following files in your working directory
   * ...                             # Other nextflow hidden files, eg. history of pipeline runs and old logs.
 </FileTree>
 
-#### **Using the params.yml file**
+### **Using the params.yml file**
 
 If you wish to repeatedly use the same parameters for multiple runs, rather than specifying each flag in the command, you can specify these in a params file.
 
@@ -174,7 +174,7 @@ participant_label:
 <...>
 ```
 
-#### **Reproducibility**
+### **Reproducibility**
 
 It is a good idea to specify the pipeline version when running the pipeline on your data. This ensures that a specific version of the pipeline code and software are used when you run your pipeline. If you keep using the same tag, you'll be running the same version of the pipeline, even if there have been changes to the code since.
 
@@ -188,13 +188,13 @@ To further assist in reproducibility, you can use share and reuse [parameter fil
 If you wish to share such profile (such as upload as supplementary material for academic publications), make sure to NOT include cluster specific paths to files, nor institutional specific profiles.
 :::
 
-#### **Core `nextflow` arguments**
+### **Core `nextflow` arguments**
 
 :::note
 These options are part of Nextflow and use a *single* hyphen (pipeline parameters use a double-hyphen)
 :::
 
-#### **`-profile`**
+### **`-profile`**
 
 Use this parameter to choose a configuration profile. Profiles can give configuration presets for different compute environments.
 
@@ -209,12 +209,12 @@ The pipeline also dynamically loads configurations from [https://github.com/nf-c
 Note that multiple profiles can be loaded, for example: `-profile tracking,docker` - the order of arguments is important!
 They are loaded in sequence, so later profiles can overwrite earlier profiles. For a complete description of the available profiles, please see this [section](#choosing-a-profile).
 
-#### **`-resume`**
+### **`-resume`**
 
 Specify this when restarting a pipeline. Nextflow will use cached results from any pipeline steps where the inputs are the same, continuing from where it got to previously. For input to be considered the same, not only the names must be identical but the files' contents as well. For more info about this parameter, see [this blog post](https://www.nextflow.io/blog/2019/demystifying-nextflow-resume.html).
 
 You can also supply a run name to resume a specific run: `-resume [run-name]`. Use the `nextflow log` command to show previous run names.
 
-#### **`-c`**
+### **`-c`**
 
 Specify the path to a specific config file (this is a core Nextflow command). See the [nf-core website documentation](https://nf-co.re/usage/configuration) for more information.

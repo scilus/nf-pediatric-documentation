@@ -15,10 +15,9 @@ export default defineConfig({
 			title: 'nf-pediatric',
 			plugins: [
 				starlightVersions({
-				versions: [{
-					slug: '0.1.0',
-					label: 'v0.1.0 (latest)',
-					}],
+					versions: [
+						{ slug: '0.1.0', label: 'v0.1.0' },
+					],
 				}),
 			],
 			logo: {

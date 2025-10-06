@@ -8,10 +8,6 @@ on:
         type: boolean
         required: false
         default: false
-      pr_number:
-        description: "The pull request number (used for comments)"
-        type: number
-        required: false
 
 # Allow this job to clone the repo and create a page deployment
 permissions:
@@ -57,11 +53,11 @@ jobs:
         id: pipeline_params
         run: |
           nf-core pipelines schema docs -o parameters.md -x markdown
-          echo '---' | cat - parameters.md > temp && mv temp parameters.md
-          echo 'title: Pipeline Parameters' | cat - parameters.md > temp && mv temp parameters.md
-          echo 'description: nf-pediatric parameters' | cat - parameters.md > temp && mv temp parameters.md
-          echo '---' | cat - parameters.md > temp && mv temp parameters.md
           echo '' | cat - parameters.md > temp && mv temp parameters.md
+          echo '---' | cat - parameters.md > temp && mv temp parameters.md
+          echo 'description: nf-pediatric parameters' | cat - parameters.md > temp && mv temp parameters.md
+          echo 'title: Pipeline Parameters' | cat - parameters.md > temp && mv temp parameters.md
+          echo '---' | cat - parameters.md > temp && mv temp parameters.md
           sed -E -i 's/^## (.*)$/### **\1**/' parameters.md
           sed -E -i '/^# scilus\/nf-pediatric pipeline parameters$/,/^nf-pediatric is a neuroimaging pipeline to process pediatric MRI data \(dMRI, and sMRI\) ranging from 0-18 years old\.$/d' parameters.md
 

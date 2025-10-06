@@ -116,7 +116,7 @@ Some computing nodes does not have access to internet at runtime. Since the pipe
      :::
 </Steps>
 
-#### **Reusing the downloaded containers during the pipeline execution**
+### **Reusing the downloaded containers during the pipeline execution**
 
 Once containers are downloaded, `nextflow` needs to be told where to look for those containers. If not already set, you need to reset the environment variables described above.
 
@@ -129,12 +129,12 @@ Once containers are downloaded, `nextflow` needs to be told where to look for th
   </TabItem>
 </Tabs>
 
-Now you are good to go! Please refer to the [usage documentation on how to launch the pipeline](./usage).
+Now you are good to go! Please refer to the [usage documentation on how to launch the pipeline](/nf-pediatric/0.1.0/guides/usage).
 
-#### **Downloading TemplateFlow templates**
+### **Downloading TemplateFlow templates**
 
-`nf-pediatric` allows users to select a specific output space in which all subject will be registered. Those templates are fetch using the [TemplateFlow Archive](https://www.templateflow.org/) [(Ciric *et al*, 2022)](https://doi.org/10.1038/s41592-022-01681-2). While downloading is directly handled in `nf-pediatric` when internet is available, for offline use, the selected template (using the [`--template`](./parameters#output-to-template-options)) needs to be available. You can refer to the [official TemplateFlow documentation](https://www.templateflow.org/usage/archive/) for information on how to download the archive using either `datalad` or the Python client.
+`nf-pediatric` allows users to select a specific output space in which all subject will be registered. Those templates are fetch using the [TemplateFlow Archive](https://www.templateflow.org/) [(Ciric *et al*, 2022)](https://doi.org/10.1038/s41592-022-01681-2). While downloading is directly handled in `nf-pediatric` when internet is available, for offline use, the selected template (using the [`--template`](/nf-pediatric/0.1.0/guides/parameters#output-to-template-options)) needs to be available. You can refer to the [official TemplateFlow documentation](https://www.templateflow.org/usage/archive/) for information on how to download the archive using either `datalad` or the Python client.
 
 :::note
-Similar to the containers, `nf-pediatric` needs to be told where to look for those downloaded templates. This can be done using the [`--templateflow_home`](parameters#output-to-template-options) parameters.
+Similar to the containers, `nf-pediatric` needs to be told where to look for those downloaded templates. This can be done using the [`--templateflow_home`](/nf-pediatric/0.1.0/guides/parameters#output-to-template-options) parameters.
 :::
